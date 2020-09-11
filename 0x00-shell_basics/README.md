@@ -1,1 +1,1 @@
-This directory is for the script of current working directory.
+This file is for the shell basics scripts.
