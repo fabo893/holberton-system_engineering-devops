@@ -1,0 +1,1 @@
+This projects is about variables, expansions and other commands.
