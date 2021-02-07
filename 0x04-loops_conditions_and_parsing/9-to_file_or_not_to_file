@@ -3,17 +3,17 @@
 FILE="holbertonschool"
 if [ -e "$FILE" ]
 then
-	echo "$FILE file exists"
+	echo "holbertonschool file exists"
 	if [ -s "$FILE" ]
 	then
-		echo "$FILE is not empty"
+		echo "holbertonschool is not empty"
 	else
-		echo "$FILE is empty"
+		echo "holbertonschool is empty"
 	fi
 	if [ -f "$FILE" ]
 	then
-		echo "$FILE is a regular file"
+		echo "holbertonschool is a regular file"
 	fi
 else
-	echo "$FILE file does not exist"
+	echo "holbertonschool file does not exist"
 fi
