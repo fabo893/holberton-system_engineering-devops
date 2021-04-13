@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Install your load balancer
+sudo apt-get update
+sudo apt-get -y install haproxy
+sed -i "5i ENABLED=1" /etc/default/haproxy
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
+sudo chmod 666 /etc/haproxy/haproxy.cfg.orig
+sudo echo "frontend Local_Server\n\tbind *:80\n\tmode http\n\tdefault_backend webserver\nbackend webserver\n\tbalance roundrobin\n\tserver 2468-web-01 35.237.66.234:80 check\n\tserver 24-web-02 34.73.40.242:80 check\n" >> sudo /etc/haproxy/haproxy.cfg.orig
+
