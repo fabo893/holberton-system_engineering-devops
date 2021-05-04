@@ -4,11 +4,10 @@
 """
 
 
-import requests
-from sys import argv
-
-
 if __name__ == "__main__":
+    import requests
+    from sys import argv
+
     url = "https://jsonplaceholder.typicode.com/users"
     u_id = argv[1]
     u_p = requests.get(url + "/{}".format(u_id)).json()
