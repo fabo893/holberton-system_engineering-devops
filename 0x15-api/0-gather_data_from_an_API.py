@@ -9,43 +9,22 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    u = requests.get('https://jsonplaceholder.typicode.com/users')
-    d1 = u.json()
-    td = requests.get('https://jsonplaceholder.typicode.com/todos')
-    d2 = td.json()
+    url = "https://jsonplaceholder.typicode.com/users"
+    u_id = argv[1]
+    u_p = requests.get(url + "/{}".format(u_id)).json()
+    u_td = requests.get(url + "/{}/todos".format(u_id)).json()
 
-    arg = int(argv[1]) - 1
-
-    ul = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
-                      .format(arg + 1))
-    d3 = ul.json()
-
-    EMPLOYEE_NAME = d1[arg]['name']
-    empid = d1[arg]['id']
-
-    total_res = 0
-    for i in d2:
-        if i['userId'] == empid:
-            total_res = total_res + 1
-
-    TOTAL_NUMBER_OF_TASKS = total_res
-
+    u_name = u_p.get('name')
+    td_total = len(u_td)
     done = 0
-    for i in d2:
-        if i['userId'] == empid and i['completed'] is True:
+    td_title = []
+
+    for x in u_td:
+        if x.get('completed'):
             done = done + 1
+            td_title.append(x.get('title'))
 
-    NUMBER_OF_DONE_TASKS = done
-
-    e = EMPLOYEE_NAME
-    n = NUMBER_OF_DONE_TASKS
-    t = TOTAL_NUMBER_OF_TASKS
-
-    lis = []
-    for l in d3:
-        for k, v in l.items():
-            if k == 'completed' and v is True:
-                lis.append(l.get('title'))
-
-    print("Employee {} is done with tasks({}/{}):".format(e, n, t))
-    print("\n".join("\t {}".format(title) for title in lis))
+    print("Employee {} is done with tasks({}/{}):".format(u_name,
+                                                          done,
+                                                          td_total))
+    print("\n".join("\t {}".format(title) for title in td_title))
