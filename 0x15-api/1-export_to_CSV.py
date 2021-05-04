@@ -3,9 +3,9 @@
     Gather data from an API
 """
 
+import csv
 import requests
 from sys import argv
-import csv
 
 
 if __name__ == "__main__":
@@ -24,6 +24,6 @@ if __name__ == "__main__":
         row.append(r)
 
     with open("{}.csv".format(u_id), 'w') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         writer.writerows(row)
     f.close()
