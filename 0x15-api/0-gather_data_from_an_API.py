@@ -41,4 +41,4 @@ if __name__ == "__main__":
     for i in d2:
         if i['userId'] == empid and i['completed'] is True:
                 title = i['title']
-                print("\t{}".format(title))
+                print("\t {}".format(title))
