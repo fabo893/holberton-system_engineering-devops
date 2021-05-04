@@ -27,4 +27,5 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".format(u_name,
                                                           done,
                                                           td_total))
-    print("\n".join("\t {}".format(title) for title in td_title))
+    for title in td_title:
+        print("\t {}".format(title))
