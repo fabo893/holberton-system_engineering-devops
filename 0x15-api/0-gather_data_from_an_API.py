@@ -9,15 +9,13 @@ import sys
 
 
 if __name__ == "__main__":
-    u = requests.get('https://jsonplaceholder.typicode.com/users')
+    u = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(sys.argv[1]))
     d1 = u.json()
     td = requests.get('https://jsonplaceholder.typicode.com/todos')
     d2 = td.json()
 
-    arg = int(sys.argv[1]) - 1
-
-    EMPLOYEE_NAME = d1[arg]['name']
-    empid = d1[arg]['id']
+    EMPLOYEE_NAME = d1['name']
+    empid = d1['id']
 
     total_res = 0
     for i in d2:
