@@ -36,8 +36,9 @@ e = EMPLOYEE_NAME
 n = NUMBER_OF_DONE_TASKS
 t = TOTAL_NUMBER_OF_TASKS
 
-print("Employee {} is done with tasks({}/{}):".format(e, n, t))
-for i in d2:
-    if i['userId'] == empid and i['completed'] is True:
-        title = i['title']
-        print("\t {}".format(title))
+if __name__ == "__main__":
+    print("Employee {} is done with tasks({}/{}):".format(e, n, t))
+    for i in d2:
+        if i['userId'] == empid and i['completed'] is True:
+            title = i['title']
+            print("\t {}".format(title))
